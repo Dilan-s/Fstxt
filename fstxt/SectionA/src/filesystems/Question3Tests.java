@@ -1,26 +1,28 @@
 package filesystems;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
 public class Question3Tests {
 
-  /*
-  DocFile f1 = new DocDataFile("f1", new byte[] { 1 });
-  DocFile f2 = new DocDataFile("f2", new byte[] { 2, 2 });
-  DocFile f3 = new DocDataFile("f3", new byte[] { 3, 3, 3 });
-  DocFile f4 = new DocDataFile("f4", new byte[] { 4, 4, 4, 4 });
-  DocFile f5 = new DocDataFile("f5", new byte[] { 5, 5, 5, 5, 5 });
-  DocFile f6 = new DocDataFile("f6", new byte[] { 6, 6, 6, 6, 6, 6 });
-  DocFile f7 = new DocDataFile("f7", new byte[] { 7, 7, 7, 7, 7, 7, 7 });
-  DocFile f8 = new DocDataFile("f8", new byte[] { 8, 8, 8, 8, 8, 8, 8, 8 });
+  DocFile f1 = new DocDataFile("f1", new byte[]{1});
+  DocFile f2 = new DocDataFile("f2", new byte[]{2, 2});
+  DocFile f3 = new DocDataFile("f3", new byte[]{3, 3, 3});
+  DocFile f4 = new DocDataFile("f4", new byte[]{4, 4, 4, 4});
+  DocFile f5 = new DocDataFile("f5", new byte[]{5, 5, 5, 5, 5});
+  DocFile f6 = new DocDataFile("f6", new byte[]{6, 6, 6, 6, 6, 6});
+  DocFile f7 = new DocDataFile("f7", new byte[]{7, 7, 7, 7, 7, 7, 7});
+  DocFile f8 = new DocDataFile("f8", new byte[]{8, 8, 8, 8, 8, 8, 8, 8});
 
   DocDirectory d1 = new DocDirectory("d1");
   DocDirectory d2 = new DocDirectory("d2");
@@ -28,7 +30,7 @@ public class Question3Tests {
   DocDirectory d4 = new DocDirectory("dir4");
 
   final Comparator<DocFile> docFileComparator = (file1, file2) -> file1.getName()
-        .compareTo(file2.getName());
+      .compareTo(file2.getName());
 
   @Before
   public void setUp() throws Exception {
@@ -153,7 +155,7 @@ public class Question3Tests {
     } catch (IllegalArgumentException exception) {
       assertTrue(false);
     }
-    d2.addFile(new DocDataFile("dir4", new byte[] { 1 }));
+    d2.addFile(new DocDataFile("dir4", new byte[]{1}));
   }
 
   @Test
@@ -169,6 +171,5 @@ public class Question3Tests {
     assertSame(d4, d2.getFile("dir4"));
     assertSame(f1, d1.getFile("f1"));
   }
-  */
 
 }

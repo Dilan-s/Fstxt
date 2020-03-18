@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -43,7 +44,36 @@ public class Utility {
   }
 
   public static Map<String, Integer> countWords(List<String> words) {
-    //TODO replace the current sequenctial implementation with a concurrent one (Q4)
-    return words.stream().collect(Collectors.toMap(w -> w, w -> 1, Integer::sum));
+    int THREAD_NUM = 8;
+
+    Counter[] counters = new Counter[THREAD_NUM];
+    int lengthPerThread = words.size() / THREAD_NUM;
+    for (int i = 0; i < THREAD_NUM - 1; i++) {
+      counters[i] = new Counter(words, i * lengthPerThread, (i + 1) * lengthPerThread);
+    }
+    counters[THREAD_NUM - 1] = new Counter(words, (THREAD_NUM - 1) * lengthPerThread, words.size());
+    Arrays.stream(counters).forEach(Thread::start);
+
+    for (Counter counter : counters) {
+      try {
+        counter.join();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+
+    Map<String, Integer> result = new HashMap<>();
+    for (String word : words) {
+      Integer totalCount =
+          Arrays.stream(counters)
+              .map(Counter::getResult)
+              .filter((mapResult) -> mapResult.containsKey(word))
+              .map((mapResult) -> mapResult.get(word))
+              .reduce(Integer::sum)
+              .get();
+      result.put(word, totalCount);
+    }
+
+    return result;
   }
 }

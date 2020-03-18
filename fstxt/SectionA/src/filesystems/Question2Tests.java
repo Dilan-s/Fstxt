@@ -1,6 +1,8 @@
 package filesystems;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,10 +13,9 @@ import org.junit.Test;
 
 public class Question2Tests {
 
-  /*
   @Test
   public void testEquals() {
-    DocDataFile f1 = new DocDataFile("hello", new byte[] { 1, 2, 3 });
+    DocDataFile f1 = new DocDataFile("hello", new byte[]{1, 2, 3});
     StringBuilder sb = new StringBuilder();
     sb.append("he");
     sb.append("llo");
@@ -25,7 +26,7 @@ public class Question2Tests {
     DocDataFile f2 = new DocDataFile(sb.toString(), ba);
     DocDataFile f3 = new DocDataFile("hello", ba);
     DocDataFile f4 = new DocDataFile("hello1", ba);
-    DocDataFile f5 = new DocDataFile("hello", new byte[] { 1, 2 });
+    DocDataFile f5 = new DocDataFile("hello", new byte[]{1, 2});
 
     Set<Object> objectSet = new HashSet<>();
     objectSet.add(new IOException());
@@ -52,6 +53,5 @@ public class Question2Tests {
     assertNotEquals(f2, null);
 
   }
-  */
 
 }
